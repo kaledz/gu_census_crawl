@@ -60,7 +60,7 @@ s3 = boto3.client(
 
 # COMMAND ----------
 
-# MAGIC %run "/Workspace/Shared/gu_census_crawl/common_crawl/testing/wet_files_extraction"
+# MAGIC %run "/Workspace/Shared/gu_census_crawl/nlp_pipeline/scratch/wet_files_extraction"
 
 # COMMAND ----------
 
