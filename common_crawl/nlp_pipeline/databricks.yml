@@ -1,0 +1,35 @@
+# This is a Databricks asset bundle definition for nlp_pipeline.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: nlp_pipeline
+  uuid: 74fb6ff0-0332-432b-84ba-b52c78e57784
+
+artifacts:
+  python_artifact:
+    type: whl
+    build: uv build --wheel
+
+include:
+  - resources/*.yml
+  - resources/*/*.yml
+
+targets:
+  dev:
+    # The default target uses 'mode: development' to create a development copy.
+    # - Deployed resources get prefixed with '[dev my_user_name]'
+    # - Any job schedules and triggers are paused by default.
+    # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-a1e27fcd-fa88.cloud.databricks.com
+
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-a1e27fcd-fa88.cloud.databricks.com
+      # We explicitly deploy to /Workspace/Users/kl1147@georgetown.edu to make sure we only have a single copy.
+      root_path: /Workspace/Users/kl1147@georgetown.edu/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - user_name: kl1147@georgetown.edu
+        level: CAN_MANAGE
