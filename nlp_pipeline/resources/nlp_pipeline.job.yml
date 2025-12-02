@@ -1,0 +1,28 @@
+# The main job for nlp_pipeline.
+resources:
+ jobs:
+  nlp_pipeline_loop:
+    name: nlp_pipeline_loop
+    email_notifications:
+      on_failure:
+        - kl1147@georgetown.edu
+    trigger:
+      pause_status: UNPAUSED
+      periodic:
+        interval: 3
+        unit: HOURS
+    tasks:
+        - task_key: pipeline_loop
+          notebook_task:
+            notebook_path: ../src/wet_files_pipeline
+
+      # A list of task execution environment specifications that can be referenced by tasks of this job.
+      environments:
+        - environment_key: default
+
+          # Full documentation of this spec can be found at:
+          # https://docs.databricks.com/api/workspace/jobs/create#environments-spec
+          spec:
+            environment_version: "2"
+            dependencies:
+              - ../dist/*.whl
