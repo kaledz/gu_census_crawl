@@ -27,11 +27,14 @@ common_crawl/
 │   ├── databricks.yml          # Databricks Asset Bundle configuration
 │   └── pyproject.toml          # Python dependencies
 │
-└── analysis/                   # Classification and analysis notebooks
-    ├── classification_model.py # ML models for cite vs. repackage classification
-    ├── dictionary.py           # Census Bureau terminology dictionaries
-    ├── ngram_analysis.py       # N-gram pattern analysis
-    └── sites_of_interest.py    # Domain-specific investigations
+├── analysis/                   # Classification and analysis notebooks
+│   ├── classification_model.py # ML models for cite vs. repackage classification
+│   ├── dictionary.py           # Census Bureau terminology dictionaries
+│   ├── ngram_analysis.py       # N-gram pattern analysis
+│   └── sites_of_interest.py    # Domain-specific investigations
+│
+└── power_bi/                   # Power BI report
+    └── census_repackaged.pbix  # Main dashboard for Census repackage data analysis
 ```
 
 ## 🏗️ Architecture Overview
@@ -135,6 +138,10 @@ For detailed deployment instructions, see:
 **3. Analysis** (`analysis/`)
 - Classification models, n-gram analysis, and domain investigations
 - See [analysis README](analysis/README.md) for detailed usage
+
+**4. Power Bi** (`power_bi/`)
+- Power BI report to summarize insights
+- See [power_bi README](power_bi/README.md)
 
 ### Running Jobs
 
@@ -252,6 +259,6 @@ For issues or questions:
 
 ---
 
-**Last Updated**: 12/2/2025
+**Last Updated**: 12/4/2025
 **Maintainer**: kl1147@georgetown.edu
 
